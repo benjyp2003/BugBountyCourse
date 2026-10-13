@@ -1,5 +1,7 @@
 # BountyLab roadmap
 
+Implementation note: a scoped frontend visual prototype now exists in `apps/web`. It does not implement the persisted learning milestone or any backend service. See [ADR 0003](docs/adrs/0003-frontend-visual-prototype.md) and [prototype notes](apps/web/README.md). The baseline below describes the production direction.
+
 ## Delivery rules
 
 V1 implements Weeks 1–2 only. The 12-week curriculum is direction for content design, not a requirement to scaffold every future feature. Finish each milestone's behavior and validation before broadening scope. No production feature implementation is authorized in the current documentation phase.

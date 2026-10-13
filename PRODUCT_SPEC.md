@@ -1,6 +1,8 @@
 # BountyLab product specification
 
-Status: initial design baseline. No application features are implemented.
+Implementation note: a scoped frontend visual prototype now exists in `apps/web`. It does not implement the persisted learning milestone or any backend service. See [ADR 0003](docs/adrs/0003-frontend-visual-prototype.md) and [prototype notes](apps/web/README.md). The baseline below describes the production direction.
+
+Status: production design baseline. The frontend study is implemented; authoritative learning and backend features remain deferred.
 
 ## Purpose
 

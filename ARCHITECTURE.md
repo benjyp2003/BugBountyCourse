@@ -1,6 +1,8 @@
 # BountyLab architecture
 
-Status: accepted initial direction; implementation has not begun. See [ADR 0001](docs/adrs/0001-limited-services-for-v1.md) and [ADR 0002](docs/adrs/0002-versioned-content-and-server-authority.md).
+Implementation note: a scoped frontend visual prototype now exists in `apps/web`. It does not implement the persisted learning milestone or any backend service. See [ADR 0003](docs/adrs/0003-frontend-visual-prototype.md) and [prototype notes](apps/web/README.md). The baseline below describes the production direction.
+
+Status: accepted production direction; platform runtime implementation has not begun. See [ADR 0001](docs/adrs/0001-limited-services-for-v1.md) and [ADR 0002](docs/adrs/0002-versioned-content-and-server-authority.md).
 
 ## Principles
 

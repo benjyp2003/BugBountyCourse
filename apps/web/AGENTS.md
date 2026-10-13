@@ -11,3 +11,13 @@ Follow the mission-centered visual and accessibility requirements in PRODUCT_SPE
 Use generated API types from packages/contracts. Reusable presentational primitives belong in packages/ui; lesson-specific renderers stay here. Keep secrets and platform DB access out of the frontend, including server components. A Next.js server route may forward authenticated platform requests but must not become a second domain backend.
 
 Once code exists, validate the actual lesson/quiz/progress/next-lesson path with end-to-end tests and a keyboard/mobile review. Check that private grading fields are absent from browser bundles and initial network responses.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
