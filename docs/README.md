@@ -5,6 +5,7 @@
 - [Roadmap and deferred decisions](../ROADMAP.md)
 - [ADR 0001: Limited V1 services](adrs/0001-limited-services-for-v1.md)
 - [ADR 0002: Versioned content and server authority](adrs/0002-versioned-content-and-server-authority.md)
+- [Frontend design system, architecture, and screen specifications](../apps/web/docs/README.md)
 - [Course-content model](course-design/CONTENT_MODEL.md)
 - [Conceptual database model](data/DOMAIN_MODEL.md)
 - [Lab isolation requirements](security/LAB_ISOLATION.md)
