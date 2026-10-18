@@ -7,11 +7,11 @@ export default function WeekPage() {
   return (
     <main id="main" className="page module-page" tabIndex={-1}>
       <Link className="back-link" href="/">
-        ← Overview
+        ← Dashboard
       </Link>
       <div className="module-intro">
         <div>
-          <p className="eyebrow accent">WEEK 01 / THE FOUNDATIONS</p>
+          <p className="eyebrow accent">MODULE_01 // HTTP_FOUNDATIONS</p>
           <h1>{week.title}</h1>
           <p className="lede">{week.summary}</p>
         </div>
@@ -29,7 +29,7 @@ export default function WeekPage() {
         </div>
       </div>
       <div className="module-objective">
-        <span className="small-label">BY THE END OF THIS WEEK</span>
+        <span className="small-label">OBJECTIVE</span>
         <p>
           Read a request. Trace its context.
           <br />
@@ -38,7 +38,7 @@ export default function WeekPage() {
       </div>
       <section aria-labelledby="sequence-title">
         <div className="section-heading">
-          <h2 id="sequence-title">The investigation, step by step</h2>
+          <h2 id="sequence-title">LESSON_SEQUENCE</h2>
           <span className="muted">6 lessons</span>
         </div>
         <ol className="lesson-list">

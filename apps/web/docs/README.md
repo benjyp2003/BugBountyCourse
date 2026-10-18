@@ -1,6 +1,6 @@
 # Frontend design baseline
 
-Status: proposed frontend design, 2026-10-13. Documentation only; these specifications do not establish implemented screens, finalized API endpoints, working labs, or deployed services.
+Status: production frontend proposal with a scoped three-screen prototype. The dark-first visual direction was revised on 2026-10-18. See [prototype scope and validation](../README.md); API endpoints, working labs, and deployed services remain unimplemented.
 
 BountyLab teaches bug bounty, web, API, and AI security through **Learn → Think → Inspect → Lab → Explain → Report → Review**. Learners move from understanding an application to investigating evidence like a security researcher. AI advice is optional; deterministic completion is independent of model availability.
 
@@ -26,7 +26,7 @@ BountyLab teaches bug bounty, web, API, and AI security through **Learn → Thin
 
 The five navigation destinations describe target V1 information architecture. During incremental implementation expose working destinations only; do not create dead links. A deliberate unavailable screen explains a real gate and offers a useful return action. Skills may show a truthful unassessed state until evidence and policy exist; no skill engine is required for V1.
 
-No backend services, AI functionality, vulnerable applications, production integrations, or feature pages are part of this task. A design-system proof of concept is unnecessary for these decisions.
+The authorized prototype covers only dashboard, Week 1 module, and one interactive HTTP lesson under [ADR 0003](../../../docs/adrs/0003-frontend-visual-prototype.md). Its redesign adds no backend services, AI functionality, vulnerable applications, production integrations, or further feature pages.
 
 ## Repository alignment
 

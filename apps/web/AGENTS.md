@@ -1,6 +1,6 @@
 # BountyLab frontend guidance
 
-Applies throughout `apps/web`, in addition to root guidance. This subtree is documentation only. Do not install frameworks or implement pages until the relevant implementation milestone is authorized.
+Applies throughout `apps/web`, in addition to root guidance. This subtree contains an authorized three-screen visual prototype (ADR 0003). Redesigns may update that slice; production features remain gated on milestone authorization.
 
 ## Read first
 
@@ -31,7 +31,7 @@ V1 covers Week 1 HTTP & Web Foundations (including Burp fundamentals) and Week 2
 - Keep drafts local and visibly unsaved until server acknowledgment. No localStorage progress database or global state framework by default. Retry an uncertain write with the same operation ID and payload; a deliberate new attempt uses a new ID.
 - Render discriminated blocks through `LessonRenderer`, never a hard-coded React page for each lesson. Unsupported required work blocks progression and offers recovery. Publication rejects unsupported blocks.
 - Keep the mentor contextual, optional, and initially closed. Reveal hints individually. V1 labs open externally and remain gated on isolation verification; opening a link does not establish running status.
-- Use neutral surfaces, one restrained blue interaction accent, real light/dark tokens, readable HTTP/code, and compact hierarchy. No hacker imagery, neon/glow, glassmorphism, giant gradient heroes, emoji navigation, decorative charts, or cards around every section.
+- Use dark-first charcoal surfaces, monospace navigation/controls/metadata, restrained cyan interaction accents, semantic green/amber/red states, readable HTTP/code, and compact hierarchy. See DESIGN_SYSTEM.md for tokens. No hacker imagery, neon/glow, glassmorphism, giant gradient heroes, emoji navigation, decorative charts, or cards around every section.
 - Target WCAG 2.2 AA: keyboard paths, visible unobscured focus, labels/errors, non-color status, reduced motion, accessible announcements, and local code overflow.
 
 ## Validation

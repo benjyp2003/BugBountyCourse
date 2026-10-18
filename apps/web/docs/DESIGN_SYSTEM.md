@@ -1,6 +1,6 @@
 # Visual system and interaction rules
 
-Status: design proposal. Apply through semantic CSS custom properties and Tailwind mappings when implementation is authorized; do not install a component framework now.
+Status: dark-first visual direction, validated first in the three-screen frontend prototype. Production features remain subject to milestone authorization.
 
 ## Identity and principles
 
@@ -11,63 +11,57 @@ The visual reference is a mature developer tool combined with a technical learni
 3. **Reasoning over rewards.** Explain feedback and requirements. Streaks and completion counts are secondary; no confetti, leaderboards, or punitive hint prompts.
 4. **Hierarchy before containers.** Use headings, spacing, and thin dividers. Panels frame requests, questions, or bounded tasks; ordinary prose does not need cards.
 5. **Quiet surfaces, explicit controls.** Accent means interaction or selection. Status combines words and shapes/icons, not color alone.
-6. **Long-session comfort.** Moderate line lengths, adjustable themes, stable page layouts, minimal motion, and readable dense evidence.
+6. **Long-session comfort.** Moderate line lengths, dark-first surfaces, stable page layouts, minimal motion, and readable dense evidence.
 
 Prohibited: Matrix text, skulls, random padlocks, cyberpunk, neon green, glow, fake terminals around HTTP, giant gradient heroes, purple glow, excessive rounded cards/pills, emoji as primary UI, random highlighted headline words, AI sparkles, glassmorphism, and decorative charts. Charts require an actual learner decision and a textual equivalent.
 
 ## Color tokens
 
-One restrained blue accent. Light surfaces are warm neutral; dark surfaces use independently chosen charcoal values. Prefer one-pixel separators and surface differences over shadows. These opaque pairs are candidates; browser contrast checks remain required for combined states and opacity.
+Dark is the default, independent of OS preference. Near-black and charcoal surfaces carry the interface; color is semantic and localized, never a decorative panel fill. Use one-pixel borders and surface contrast, without decorative shadows.
 
-| Semantic token | Light | Dark | Use |
-| --- | --- | --- | --- |
-| `surface.canvas` | `#FAFAF8` | `#17191C` | Page background |
-| `surface.panel` | `#FFFFFF` | `#202328` | Evidence, bounded exercise |
-| `surface.subtle` | `#F0F1EE` | `#292D33` | Header bands, hover background |
-| `text.primary` | `#20242A` | `#F2F3F5` | Body/headings |
-| `text.secondary` | `#535B66` | `#B2BAC5` | Descriptions and metadata |
-| `border.subtle` | `#D8DCE1` | `#3B424C` | Decorative separators only |
-| `border.control` | `#737D89` | `#818C9B` | Required input/control boundaries |
-| `accent.foreground` | `#2459A6` | `#99BEFF` | Links, selection text, focus ring |
-| `accent.surface` | `#EAF0FB` | `#253853` | Selected row background |
-| `action.primary.bg` | `#2459A6` | `#99BEFF` | Primary button |
-| `action.primary.text` | `#FFFFFF` | `#17191C` | Primary button text |
-| `action.primary.hover` | `#19477F` | `#B4CEFF` | Hover, also preserve focus |
-| `status.success` | `#23633D` | `#8CD5A3` | Confirmed completion |
-| `status.warning` | `#805500` | `#E7C274` | Attention, expiring lab |
-| `status.error` | `#A32635` | `#FFA1AA` | Failure/invalid fields |
-| `status.info` | `#2459A6` | `#99BEFF` | Informational notice |
+| CSS token | Dark value | Use |
+| --- | --- | --- |
+| `--canvas` | `#0B0D0E` | Workspace canvas |
+| `--surface` | `#111416` | Navigation and bounded tasks |
+| `--raised` | `#161A1D` | Toolbar and hover surfaces |
+| `--ink` | `#EDF0F2` | Primary text |
+| `--muted` | `#A1ABB2` | Secondary text |
+| `--line` | `#272D31` | Structural separators |
+| `--control` | `#65737D` | Necessary control boundaries |
+| `--accent` | `#83D4E4` | Interaction, selection, focus |
+| `--selected` | `#1B2E35` | Local selected value background |
+| `--green` | `#8BC7A1` | Success, confirmed, running |
+| `--amber` | `#DFBA79` | Hypothesis, attention, warning |
+| `--red` | `#EF9292` | Error, security failure |
 
 Status foregrounds sit on canvas/panel backgrounds; do not assume they work on arbitrary tinted fills. A thin decorative divider can have lower contrast; a boundary necessary to recognize an input cannot. Body and secondary text must meet 4.5:1; large text and essential non-text UI must meet 3:1. Links in prose are underlined. Disabled actions retain readable text and an adjacent reason; do not reduce a whole form to illegibility.
 
-`lab.active` aliases informational color plus a “Running” label and activity icon. `lesson.completed` aliases success plus a check and “Complete.” Neither creates another accent palette. Future severity badges use explicit text: Informational → info, Low → neutral, Medium → warning, High → error, Critical → error plus heavier border/icon. Severity is distinct from lesson failure and is never an input to skill scoring by itself.
+`lab.active` aliases success color plus a “Running” label and activity icon. `lesson.completed` aliases success plus a check and “Complete.” Neither creates another accent palette. Future severity badges use explicit text: Informational → info, Low → neutral, Medium → warning, High → error, Critical → error plus heavier border/icon. Severity is distinct from lesson failure and is never an input to skill scoring by itself.
 
-Theme control offers System / Light / Dark in the user menu. Default to system preference, retain explicit override as a presentation preference, and set `color-scheme`. Theme preference may use a small cookie read at render time to avoid a flash; it is not learner progress. Design code syntax palettes for each theme. Do not invert screenshots or apply global inversion filters.
+Set `color-scheme: dark` at the root. No theme switcher is added to the prototype. A future optional light theme needs independent contrast validation; it must not change the dark default.
 
 ## Typography
 
-Propose **IBM Plex Sans** for UI and **IBM Plex Mono** for HTTP/code. Use locally hosted, license-checked assets through Next.js font support when implemented; system sans and `ui-monospace` are resilient fallbacks. Load only necessary weights: UI 400/500/600, mono 400/500. No external font request is needed at runtime.
+Monospace defines navigation, headings, controls, metadata, progress, and HTTP. Evaluated choices: IBM Plex Mono for its readable technical character, Geist Mono for a compact developer-tool voice, and JetBrains Mono for code-heavy views. Prefer IBM Plex Mono in the local font stack, followed by Geist Mono, JetBrains Mono, Consolas, and Liberation Mono. No font files or external requests are added; actual rendering uses the first installed family. Use system sans for explanatory prose and drafts.
 
 | Role | Size / line height | Weight |
 | --- | --- | --- |
-| Page title | 28 / 36 px | 600 |
-| Section heading | 22 / 30 px | 600 |
-| Subheading | 18 / 26 px | 600 |
-| Lesson prose | 17 / 28 px | 400 |
-| Body/control | 16 / 24 px | 400/500 |
-| Compact metadata | 14 / 20 px | 400/500 |
-| Code | 14 / 22 px | 400 |
-| Evidence caption | 14 / 20 px | 500 |
+| Page title | 26 / 36 px | 500 |
+| Mobile title | 22 / 31 px | 500 |
+| Section heading | 20 / 28 px | 500 |
+| Lesson prose | 14-15 / 22-24 px | 400 |
+| Control / metadata | 11-13 / 18-21 px | 400 |
+| HTTP values | 13-16 / 23-26 px | 400 |
 
-Use rem-based values; scale with browser preferences. Mobile titles can use 24/32. Never shrink code to fit the viewport. Keep paragraphs at 60–72 characters; evidence may use a wider region. Use sentence case. Reserve uppercase for short labels such as HTTP methods and ACCOUNT A, not body text. Tabular numbers help progress and aligned metadata. Do not use typography size alone to indicate heading semantics.
+Implement in rem. Use compact labels such as CURRENT_SESSION, MODULE_01, REQUEST_01, OBSERVATION, HYPOTHESIS, EVIDENCE, and CONCLUSION. Keep questions and prose in sentence case. Do not shrink HTTP to fit; scroll it locally. Maintain semantic headings and tabular alignment. Avoid serif editorial headings and oversized marketing titles.
 
 ## Spacing, geometry, and density
 
 Spacing scale in px (implemented as rem): 4, 8, 12, 16, 24, 32, 48, 64. Default control internal gaps 8; related fields 16; section gaps 32; major page divisions 48. Use 16 px mobile gutters, 24 px tablet, 32 px desktop.
 
-Top bar: 56 px minimum. Sidebar: 224 px. Main content: maximum 1200 px centered inside available width. Reading column: maximum 720 px; evidence/comparison region: maximum 1040 px. Inputs/buttons: minimum 44 px height; compact evidence toolbar controls may be 32 px visually with at least 24×24 px targets and sufficient separation, aiming for 44×44 on touch.
+Top bar: 56 px minimum. Sidebar: 224 px, with compact lowercase navigation and a > selection marker. Show only implemented destinations in the prototype. Main content: maximum 1200 px centered inside available width. Reading column: maximum 720 px; evidence/comparison region: maximum 1040 px. Inputs/buttons: minimum 44 px height; compact evidence toolbar controls may be 32 px visually with at least 24×24 px targets and sufficient separation, aiming for 44×44 on touch.
 
-Radii: 4 px controls, 6 px evidence/panels, 8 px modal/drawer. Circular avatars are fine; pills are reserved for short statuses when they improve scanning. Borders: 1 px. Focus: 2 px accent outline with 2 px offset. Shadows only for genuinely floating overlays. Layer proposal: base 0, sticky chrome 10, popover 20, modal backdrop 30, modal 40, critical toast 50. Inline form errors are preferred to toasts.
+Radii: 2-4 px controls, 4-6 px evidence/panels, square navigation drawer. Circular avatars are fine; pills are reserved for short statuses when they improve scanning. Borders: 1 px. Focus: 2 px accent outline with 2 px offset. No decorative shadows; separate the drawer with a border and scrim. Layer proposal: base 0, sticky chrome 10, popover 20, modal backdrop 30, modal 40, critical toast 50. Inline form errors are preferred to toasts.
 
 Dense desktop layouts may reduce row padding to 8–12 px; never shrink target areas, text, or labels to achieve density. Evidence line numbers are optional, non-copying, and hidden from redundant screen-reader reading.
 
@@ -93,7 +87,7 @@ Breakpoints are layout thresholds, not device detection. Prefer content fit when
 | --- | --- |
 | Below 640 px | Compact top bar; menu button opens modal navigation; one column; 16 px gutters; full-width primary action where useful |
 | 640–1023 px | Collapsed navigation drawer; 24 px gutters; one reading column; two columns only for short independent metadata |
-| 1024–1279 px | Sidebar visible in app shell; focused lesson has no sidebar; comparisons stack if each would be under 360 px |
+| 1024–1279 px | Sidebar visible in app shell, including the prototype lesson; comparisons stack if each would be under 360 px |
 | 1280 px and above | 224 px sidebar; wide evidence; lab may use challenge/workspace split; mentor may use a side panel if reading width stays at least 600 px |
 
 At 320 CSS px and 400% zoom, page content reflows without horizontal page scrolling. HTTP/code regions may scroll locally with a labeled focusable region and visible scroll affordance; provide optional soft wrap without changing copied text. Keep long paths/IDs from widening grids (`min-width: 0`). On phones comparisons stack and form fields remain readable at text zoom.

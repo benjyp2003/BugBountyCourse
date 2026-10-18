@@ -1,6 +1,40 @@
 import { test, expect, type Page, type Locator } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { rawRequest, lesson } from "../src/prototype/content";
+
+test("Mobile drawer contains keyboard focus, closes, and navigates", async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.emulateMedia({ colorScheme: "light", reducedMotion: "reduce" });
+  await page.goto("/");
+  expect(await page.locator("html").evaluate(el => getComputedStyle(el).colorScheme)).toBe("dark");
+  const menu = page.getByRole("button", { name: "Menu", exact: true });
+  await keyboardFocus(page, menu);
+  await page.keyboard.press("Enter");
+  const drawer = page.getByRole("dialog", { name: "BOUNTYLAB_" });
+  await expect(drawer).toBeVisible();
+  await expect(drawer.getByRole("button", { name: "Close" })).toBeFocused();
+  for (let i = 0; i < 8; i++) {
+    await page.keyboard.press("Tab");
+    expect(await drawer.evaluate(el => el.contains(document.activeElement))).toBe(true);
+  }
+  await accessibility(page);
+  await page.screenshot({ path: testInfo.outputPath("navigation-375.png"), fullPage: true });
+  await page.keyboard.press("Escape");
+  await expect(drawer).not.toBeVisible();
+  await expect(menu).toBeFocused();
+  await page.keyboard.press("Enter");
+  await drawer.getByRole("link", { name: "learn", exact: true }).click();
+  await expect(page).toHaveURL("/week-1");
+  await expect(drawer).not.toBeVisible();
+  for (const size of [{ width: 320, height: 740 }, { width: 812, height: 375 }]) {
+    await page.setViewportSize(size);
+    for (const url of ["/", "/week-1", "/week-1/read-http"]) {
+      await page.goto(url);
+      await noOverflow(page);
+      await accessibility(page);
+    }
+  }
+});
 async function accessibility(page: Page) {
   const focused = await page.evaluateHandle(() => document.activeElement);
   const result = await new AxeBuilder({ page })

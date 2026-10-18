@@ -15,7 +15,7 @@ export function HttpEvidence({
   request,
   selected,
   onSelect,
-  label = "Captured request",
+  label = "REQUEST_01",
 }: Props) {
   const [raw, setRaw] = useState(false);
   const id = useId();

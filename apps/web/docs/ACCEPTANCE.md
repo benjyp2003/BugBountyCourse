@@ -5,7 +5,7 @@ These are future verification gates, not claims that tests or features exist. Fr
 ## Documentation baseline — this task
 
 - `apps/web/AGENTS.md` points to a self-contained frontend reading path and describes product intent, phase, stack, constraints, and validation.
-- Design principles, light/dark tokens, typography, spacing, layouts, responsive behavior, and accessibility have explicit decisions.
+- Design principles, dark-first tokens, typography, spacing, layouts, responsive behavior, and accessibility have explicit decisions.
 - Navigation and information architecture specify the five destinations, focused lesson mode, contextual mentor, and anonymous identity limits.
 - Dashboard, Learn, Module, Lesson, Lab, Skills, and Reports each have low-fidelity wireframes, primary actions, data priority, non-happy-path states, and mobile behavior.
 - Architecture defines component ownership, server/client boundaries, shared primitives/contracts, renderer pipeline, block proposal, and state ownership/transitions.
@@ -43,7 +43,7 @@ Do not broaden M1 to lab/mentor/skill engines. The first successor need not cont
 | V1-08 | Contextual mentor remains closed initially, does not dominate or gate learning, shows only requested hint level, and requires a permitted explicit solution reveal. Provider failure leaves deterministic completion available. |
 | V1-09 | Skills shows truthful unassessed/not-started/future states. If mastery labels are enabled, they have server-owned policy and inspectable evidence; no client-inferred mastery from completion or XP. |
 | V1-10 | All seven screen families have distinct loading/empty/error states. Errors preserve inputs, retries are scoped, and missing server data never appears as zero or success. |
-| V1-11 | Light and dark use semantic tokens; every interactive, error, syntax, selected, and focus state meets contrast requirements. No forbidden decorative aesthetic appears. |
+| V1-11 | Dark is the default and uses semantic tokens; any future light theme is independently validated; every interactive, error, syntax, selected, and focus state meets contrast requirements. No forbidden decorative aesthetic appears. |
 | V1-12 | Keyboard, screen reader, zoom/reflow, touch, and reduced motion checks pass across learning, reporting, dialogs, hints, and available lab controls. Mobile explicitly supports appropriate work without simulating a desktop interception suite. |
 | V1-13 | Anonymous session limitations are stated where relevant. No cross-device recovery promise, JavaScript session token storage, private data in shared caches, or fake frontend persistence. |
 
@@ -52,7 +52,7 @@ Do not broaden M1 to lab/mentor/skill engines. The first successor need not cont
 | Area | Representative checks |
 | --- | --- |
 | Viewports | 320, 390, 768, 1024, 1440 CSS px; portrait/landscape and open virtual keyboard |
-| Themes | System preference, explicit light/dark, refresh without unreadable flash; focus/error/syntax colors in both |
+| Themes | Dark default with light and dark OS preferences; focus/error/syntax colors; independent checks if light theme is added |
 | Accessibility | Keyboard only, screen-reader headings/labels/results, dialog focus return, 200% text zoom, 400% reflow, reduced motion, forced colors |
 | Content | Short/long prose; long paths and JSON; duplicate headers; empty body; malformed/unknown block; old revision; missing reference |
 | Learners | New, partial, complete, locked prerequisite, session expired; two separate sessions cannot access each other's work |

@@ -2,6 +2,19 @@
 
 Status: target design; route paths are proposals for Next.js pages, not API endpoints. Examples are synthetic. Implement in [milestone order](README.md), not all at once.
 
+## Visual direction for the validated slice
+
+The dashboard, module, and interactive lesson use the dark-first workspace in
+[DESIGN_SYSTEM.md](DESIGN_SYSTEM.md). The dashboard begins with CURRENT_SESSION,
+module identifier, lesson title, aligned status/progress, and Continue, followed by
+LEARNING_PATH rows. No statistic cards, radial charts, or activity heatmaps.
+The module uses MODULE_01, OBJECTIVE, and LESSON_SEQUENCE. The lesson groups short
+prompts and HTTP artifacts into the existing guided investigation; observation,
+hypothesis, evidence, and conclusion are distinct patterns. Native request-part
+buttons keep direct selection keyboard accessible. Navigation is a compact sidebar
+at desktop and a modal drawer below 1024 px. Only dashboard and learn are enabled
+in this prototype; the broader destinations below remain future scope.
+
 ## Information architecture
 
 A course contains ordered weeks; V1 presents each week as a module. Modules reference ordered immutable lesson revisions. Lessons contain ordered blocks and activity references; activities hold submitted work and server outcomes. Labs and report exercises attach to lesson context but may also be revisited from their primary destinations. Skills summarize evidence only when an approved policy exists.

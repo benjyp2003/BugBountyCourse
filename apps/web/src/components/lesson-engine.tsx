@@ -63,7 +63,7 @@ export function LessonEngine({ lesson }: { lesson: PrototypeLesson }) {
           <>
             {evidence()}
             <div className="hook-note">
-              <span className="small-label">YOUR MISSION</span>
+              <span className="small-label">OBJECTIVE</span>
               <p>
                 Find the value that selects an order. Explain why changing it is
                 a testable idea, not proof of a vulnerability.
@@ -309,7 +309,7 @@ export function LessonEngine({ lesson }: { lesson: PrototypeLesson }) {
       <div className="lesson-heading">
         <div>
           <p className="eyebrow">
-            LESSON 02 / 06 <span aria-hidden="true">·</span> ABOUT 12 MINUTES
+            LESSON_02 / 06 <span aria-hidden="true">·</span> ABOUT 12 MINUTES
           </p>
           <h1>{lesson.title}</h1>
         </div>
@@ -426,7 +426,7 @@ export function LessonEngine({ lesson }: { lesson: PrototypeLesson }) {
           </section>
           <aside className="lesson-margin" aria-label="Investigation method">
             <div className="margin-line" />
-            <span className="small-label">RESEARCHER’S NOTE</span>
+            <span className="small-label">INVESTIGATION_METHOD</span>
             <p className="margin-quote">
               “What do I know,
               <br />

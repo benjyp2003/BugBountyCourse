@@ -3,7 +3,7 @@ import { Shell } from "@/components/shell";
 import { PrototypeProgress } from "@/prototype/progress";
 import "./globals.css";
 export const metadata: Metadata = {
-  title: "BountyLab — Field notes for web security",
+  title: "BountyLab — Security research workspace",
   description: "An evidence-led HTTP learning prototype.",
 };
 export default function RootLayout({

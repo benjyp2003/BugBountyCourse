@@ -194,7 +194,7 @@ HTTP view stores raw synthetic data separately from optional parsed spans. Copy 
 | Answer drafts, pending submit IDs, field errors | Lesson coordinator keyed by ID + revision | In-memory until API acknowledgment; warn before losing unsent work |
 | Report/evidence note draft | Editor/page | Explicit server save; no localStorage substitute |
 | Mentor transcript in open drawer | Context-scoped page | No retention promise; saved history only with approved API policy |
-| Theme | Root layout presentation preference | System default; small cookie override allowed |
+| Theme | Root layout presentation preference | Dark default; any future explicit theme override is presentation only |
 | User identity/session | Platform-api | HttpOnly opaque cookie; no JS token store |
 | Lesson publication/revision, prerequisites, progress, grade | Platform-api | Persistent system of record; server snapshots |
 | Report versions, skill evidence/levels, XP/streak | Platform-api if capability implemented | Never computed as authority in frontend |
